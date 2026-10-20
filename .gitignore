@@ -1,0 +1,21 @@
+# 依赖与构建产物
+node_modules/
+dist/
+
+# 本地备份（编辑器/手工改动留下的 *.bak*）
+*.bak
+*.bak-*
+*.bak.*
+
+# 运行时日志与临时音频
+logs/
+*.log
+speak-*.mp3
+speak-*.wav
+
+# 编辑器与系统文件
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

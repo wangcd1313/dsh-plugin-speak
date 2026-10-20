@@ -1,0 +1,54 @@
+{
+  "name": "dsh-plugin-speak",
+  "version": "0.2.0",
+  "description": "Read DSH replies aloud: configurable in Settings, works for every session, on by default",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "README.md"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "tts",
+    "speech"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wangcd1313/dsh-plugin-speak.git"
+  },
+  "homepage": "https://github.com/wangcd1313/dsh-plugin-speak#readme",
+  "bugs": {
+    "url": "https://github.com/wangcd1313/dsh-plugin-speak/issues"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/schemastery": "^3.18.0"
+  },
+  "dsh": {
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-settings-general"
+      ]
+    },
+    "compatibility": {
+      "profiles": [
+        "web",
+        "desktop"
+      ]
+    }
+  }
+}
