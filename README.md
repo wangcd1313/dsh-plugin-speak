@@ -69,17 +69,17 @@ Copy-Item "$env:USERPROFILE\.dsh\tools\dsh-plugin-speak\lib\*" `
 
 ### 兜底哨兵（仅在新版插件生效前临时用）
 
-`~/.dsh/tools/focus-speak-guard.ps1` 是给「代码已改、DSH 还没重启」这段空窗期兜底的：
+仓库里的 `tools/focus-speak-guard.ps1` 是给「代码已改、DSH 还没重启」这段空窗期兜底的（**不属于插件本体**）：
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.dsh\tools\focus-speak-guard.ps1" -Watch
+powershell -NoProfile -ExecutionPolicy Bypass -File "<仓库目录>\tools\focus-speak-guard.ps1" -Watch
 ```
 
 它每 300ms 读一次 DSH 主窗口标题（「会话名 — DeepSeek Harness」），标题变化即视为切换
 会话，立刻杀掉正在朗读的 PowerShell，并在随后 10 秒内继续拦截（防止旧会话的回复合成完
-才出声）。**只看标题、不看前台窗口**——本机常用向日葵（AweSun）远程，前台窗口可能一直是
-AweSun，看前台会误判。当 `speak-plugin.log` 里出现重启后新版插件的「切换窗口/会话立即
-停止朗读」时**自动退出**，不需要装开机自启；日志在 `~/.dsh/logs/focus-speak-guard.log`。
+才出声）。**只看标题、不看前台窗口**——远程桌面/远程控制软件常把前台窗口占住，看前台
+会误判。当 `speak-plugin.log` 里出现重启后新版插件的「切换窗口/会话立即停止朗读」时
+**自动退出**，不需要装开机自启；日志在 `~/.dsh/logs/focus-speak-guard.log`。
 `-Test` 只打印状态，`-DryRun` 只记录不杀进程。
 
 ## 实现要点（踩过的坑，改之前先看）
